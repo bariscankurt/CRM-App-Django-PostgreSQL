@@ -1,0 +1,20 @@
+{% extends 'accounts/main.html' %}
+{% load static %}
+{% block content %}
+
+    <div class="deletecard">
+        <p>
+          WARNING!
+        </p>
+        <h2>
+          Are you sure you want to delete "{{order.product}}" order from the user "{{order.customer}}"?
+        </h2>
+      </div>
+      <form action="{% url 'delete_order' order.id %}" method="POST">
+          {% csrf_token %}
+          <input type="submit" class="btn btn-sm btn-success" id="deletebutton" name="Confirm" value="Confirm">
+        <a href="{% url 'home' %}" class="btn btn-sm btn-danger" id="returnbutton">Cancel</a>
+        
+      </form>
+    
+{% endblock %}
